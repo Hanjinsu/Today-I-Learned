@@ -1,4 +1,4 @@
-#EC2-Server
+# EC2-Server
 
 ## 서버 setting 순서
 
