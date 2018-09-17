@@ -17,7 +17,7 @@
 
 ## Hidden Layer
 
-- 역할 : 딥러닝은 단어에서도 나와 있듯이 깊은 학습을 위해서는 input과 output사이에 hidden layer가 필요하다. Hidden Layer의 개수는 보통 큰 input을 갖고 작은 output을 원할 때 점점 줄여주는 방식으로 구현된다. 
+- 역할 : 딥러닝은 단어에서도 나와 있듯이 깊은 학습을 위해서는 input과 output사이에 hidden layer가 필요하다. Hidden Layer의 개수는 보통 큰 input을 갖고 작은 output을 원할 때 점점 줄여주는 방식으로 구현된다.  
 
 - Hidden Layer와 역전파 : 학습은 오류역전파로 가중치들을 조정하면서 최적의 결과를 찾는다. 끝 Hidden Layer부터 차근차근 앞으로 역전파를 해나가는 방식이다. 그러나 Hidden Layer의 개수가 많은 경우에 sigmoid함수를 쓴다면 점점 앞으로 올 수록 손실값이 줄어드는 vanishing gradient문제가 발생한다. 2006년 Hiton 교수가 sigmoid함수 대신 ReLU 함수를 제안하여 이 문제를 해결했다.
 
@@ -25,4 +25,11 @@
 ! [ReLU 함수](https://t1.daumcdn.net/cfile/tistory/26261B4957F21DB42C)
 
 - Hidden Layer 생성방법 : 초기 가중치값을 랜덤으로 배정하는 것은 학습 효율적으로 위험할 확률이 크다. 각 Hidden Layer사이의 가중치들을 전부 랜덤으로 배정하는 것은 더 큰 혼란을 불러올 수 있다. 따라서 Hidden Layer 하나를 학습시키고 weigth를 집어넣게 되는데 이때 input과 output을 동일하게 하여 자기 자신을 인식할 수 있도록 초기 weight값을 잡아준다.
+
+## CNN
+
+- CNN은 Convolutional Neaural Network로 convolution이 중요시 되는 학습법이다.
+
+- 이미지 인식에서 예를 들자면 
+!
 
