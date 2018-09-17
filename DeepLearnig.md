@@ -31,5 +31,13 @@
 - CNN은 Convolutional Neaural Network로 convolution이 중요시 되는 학습법이다.
 
 - 이미지 인식에서 예를 들자면 
-!
+![CNN](http://i1.wp.com/timdettmers.com/wp-content/uploads/2015/03/convolution.png?resize=500%2C193)
+다음과 같이 이미지 패치를 원본이미지로 부터 커널사이즈 만큼 가져와서 이미지 패치와 컨볼루션 커널을 연산한다. 그러면서 하나의 연산 합이 피쳐맵에서 하나의 픽셀에 투영되고 이미지 패치가 오른쪽으로 이동하면서 계속 새로운 픽셀이 계산되어진다. Convolution, Pool, Convolutiion, Pool을 반복하며 데이터 set을 줄여나가고 학습에 데이터를 넣는 것이 CNN이다.
 
+- 이 방법이 중요한 이유는 3차원의 데이터의 공간 손실을 각 데이터의 연결관계를 학습시킴으로서 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이라는 것이다.
+
+## Word2Vec
+
+- Word Embedding : Word를 R차원의 Vector로 매핑시켜주는 것을 말한다. 학습을 하기 위해서 모든 단어의 weigths를 학습시키면 좋겠지만, 그러기엔 data set이 커지기 때문에 적절한 embedding이 필요하다. 예를 들어 100000개의 단어를 학습에 이용한다고 하면 100개의 벡터로 embedding을 하면 100차원으로 100000개의 단어를 나타낼 수 있다. 또한 장점은 의미있는 벡터로 전환되어 Woman - Man ~= Aunt - Uncle이라는 벡터 연산도 가능해진다.
+
+- Word2Vec은 2013 구글에서 발표된 연구로, Tomas Mikolov라는 사람을 필두로 만든 Continuous Word Embedding 학습모형이다. 기존의 Embedding 방법보다 계산량을 엄청나게 줄여서 몇 배 이상 빠른 학습을 가능케 하였다. CBOW모델과 Skip-gram 모델이 있다.
