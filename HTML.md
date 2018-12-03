@@ -106,3 +106,29 @@ ex)
 ~~~
 
 * `<area>`, usemap 속성 - 이미지 맵
+
+## 폼 만들기
+
+* `<form [속성="속성 값"] > 여러 폼 요소 </form>`
+- method, name, action, target
+
+ex)
+~~~
+<form action="search.php" method="post">
+  <input type="text" title="검색">
+  <input type="submit" value="검색">
+</form>
+~~~
+
+* `<lable> ; 폼 요소에 레이블을 붙이는 태그. 체크 박스 버튼 등이 생성. 로그인 창 등`
+* `<lable [속성="속성 값"] > 레이블 <input ,.> </lable>`
+
+* `<fieldset> ; 폼 요소를 그룸으로 묶는다.`
+
+* `<input> ; <input type="유형" [속성="속성 값"]>`
+* `<input type="text" id="user-name" size="10">`
+* type -> hidden, text, password, search, url, email, tel, number, range, radio, checkbox, color, data, month, week, time, datetime-local, submit, reset, image, autofocus, placeholder, readonly, required
+* `<input> 태그의 다양한 속성` ; min, max, step, size, minlengh, maxlength
+
+* `여러 데이터 나열해 보여주기 <select>, <optgroup>, <option>. <datalist>, <option>, <textarea>`
+* 기타 요소들 -> `<button> 버튼, <output> 계산 결과 표시, <progress> 작업 진행 상태, <meter> 용량 표
