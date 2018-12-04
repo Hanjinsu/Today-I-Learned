@@ -213,3 +213,225 @@ ex)
 * [속성^=값] 선택자 : 특정 값으로 시작하는 속성을 가진 요소를 찾아 스타일 적용
 * [속성$=값] 선택자 : 특정 값으로 끝나는 속성을 가진 요소를 찾아 스타일 적용
 * [속성`*`=값] 선택자 : 값의 일부가 일치하는 속성을 가진 요소를 찾아 스타일 적용
+
+## 가상 클래스와 가상 요소
+
+* :link -> 방문하지 않은 링크에 스타일 적용
+* :visited -> 방문한 링크에 스타일 적용
+* :activate -> 웹 요소를 활성화 했을 때의 스타일 적용
+* :hover -> 웹 요소에 마우스 커서를 올려놓을 때의 스타일 적용
+* :focus -> 웹 요소에 초점이 맟주어 졌을 때의 스타일 적용
+
+ex)
+```CSS
+<style>
+  .navi a:link, .navi a:visited{
+    padding: 10px 5px 5px 35px;
+    display: block;
+    color: #fff;
+    width: 150pxl
+    text-decoration: none;
+  }
+  .navi a:hover, .navi a:focus{
+    text-shadow: 0px 2px 2px *000;
+    color: #FC0;
+  }
+  .navi a:active{
+    color: red;
+  }
+</style>
+```
+* UI 요소 상태에 따른 가상 클래스 
+ - :enabled, :disabled : 요소를 사용할 수 있을 때와 없을 때의 스타일 지정
+ - :checked : 라디오 박스나 체크 박스에서 항목을 선택했을 때의 스타일 지정
+ex)
+```CSS
+    <label class="que">
+        <input type="radio" name="subject" value="speaking"><span>뀨ㅠㄲ</span>
+    </label>
+    <label class="que">
+         <input type="radio" name="subject" value="grammer"><span>에베</span>
+    </label>
+    <label class="que">
+        <input type="radio" name="subject" value="writing"><span>와더</span>
+    </label>
+
+<style>
+	input:disabled{
+                background:#ddd;
+                border:1px #ccc solid;
+        }
+	.que input:checked + span{
+                color:red;
+        }
+</style>
+```
+
+* 구조 가상 클래스
+ - :nth-child(n) : 앞에서 부터 n번째 자식 요소에 스타일 적용
+ - :nth-last-child(n) : 뒤에서 부터 n번째 자식 요소에 스타일 적용 
+```CSS
+<table class="git" border="1">
+        <tr><td>블루베리</td></tr>
+        <tr><td>사과</td></tr>
+        <tr><td>귤</td></tr>
+        <tr><td>포도</td></tr>
+        <tr><td>와인</td></tr>
+</table>
+
+<style>
+	.git tr:nth-child(2n+1){
+                background: lightblue;
+                color: black;
+        }
+</style>
+```
+
+ - :nth-of-type(n), :nth-last-of-type : 앞에서 뒤에서 n 번재 요소에 스타일 적용
+ - :first-child, :last-child : 첫번째 마지막 자식 요소 스타일 적용 
+ - :first-of-type(n), :last-of-type : 형제 요소들 중 첫번째 마지막 요소에 스타일 적용 
+ - :only-child, :only-of-type : 유일한 요소에 스타일 적용
+
+* 가상 요소
+ - ::first-line : 특정 요소의 첫번째 줄에 스타일 적용
+ - ::first-letter : 특정 요소의 첫번째 글자에 스타일 적용
+ - ::before : 특정 요소의 앞에 지정한 내용 추가
+ - ::after : 특정 요소의 뒤에 지정한 내용 추가
+
+## 변형
+-> 특정 요소의 크기나 형태 등 스타일이 바뀌는 것
+
+* translate 함수 :  지정한 방향으로 이동할 거리를 지정하면 해당 요소 이동시킴
+ - transform: translate(tx, ty)
+ - transfrom: translate3d(tx, ty, tz)
+
+* scale 함수 : 지정한 크기만큼 요소를 확대/축소
+ - transform: scale(sx, sy)
+ - transform: scale3d(sx, sy, sz)
+
+* rotate 함수 : 각도 만큼 웹 요소를 시계방향이나 시계 반대방향 회전
+ - transform : rotate (각도)
+ - transfom : rotate3d (2.5, 1.2, -1.5, 45deg)
+
+* skew 함수 : 요소를 지정한 각도만큼 비틀어 왜곡
+ - transform : skew(ax, ay);
+
+* transform-origin : 특정 지점을 변형의 기준으로 설정 ex) transform-origin: x, y, z | initial | inherit;
+* perspective : 원근감을 갖게함 ex) perspective: 크기 | none;
+* perspective-origin : 입체적으로 표현할 요소의 아랫부분 지정 ex) perspective-origin: x | y;
+* transform-style : 부모 요소에 적용한 3D 변형을 하위 요소에 적용 ex) transform-style: flat | preserve-3d
+* backface-visivility : 요소의 뒷면을 표시할 것인지 결정 
+
+## 트랜지션
+-> 웹 요소의 스타일 속성이 조금씩 자연스럽게 바뀌는 것
+* transition-property : 대상 설정 ex) transition-property : all | none | 속성이름 
+* transition-duration : 진행 시간 ex) transition-timeing-function : linear | ease | ease-in | ease-out etc..
+* transition-timing-function : 속도 곡선
+* transition-delay : 지연 시간
+* transition : 한꺼번에 설정 
+
+## 애니메이션
+
+* @keyframes 속성 : 애니메이션의 시작과 끝을 비롯해 상태가 바뀌는 지점을 설정 ex) @keyframes <이름>{ 선택자{스타일}>
+* animation-name 속성 
+ex) 
+```CSS
+div{
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  animation-name : change-bg;
+  animation-duration : 3s;
+}
+@keyframe change-bg{
+  from{
+   background-color: blue;
+   border: 1px solid balck;
+  }
+  to{
+   background-color: #a5d6ff;
+   border: 1px solid blue;
+   border-radius : 50%;
+  }
+}
+```
+* animation-duration : 실행 시간 설정
+* animation-direction : 애니메이션이 끝난후 원래 위치로 돌아가거나 반대 방향으로 애니메이션 실행 지정 ex) animation-direction: normal | alternate
+* animation-iteration-count : 애니메이션 반복 횟수 지정하기 ex) animation-iteration-count : 숫자 | infinite
+* animation-timeing-function : 애니메이션 속도 곡선 지정 ex) animation-timing-function : linear | ease | ease-in | ease-out | etc ..
+
+* **animation** 속성 : 여러 개의 애니메이션 속성을 하나의 속성으로 줄여서 사용 ex) .box{ animation: moving 3s alternate infinite ease-in;}
+
+## 반응형 웹 디자인 
+-> 다양한 화면 크기에 반응하여 화면 요소들을 자동으로 바꾸어 사이트 구현
+
+* 뷰포트 viewport : 실제 내용이 표시되는 영역
+* 뷰포트 지정하기 : `<head>`태그 안에서 `<meta>`태그를 이용해 뷰포트 지정 ex) `<meta name="viewport" content="width=device-width, initial-scale=1">`
+
+* 그리드 시스템(grid system) : 화면을 여러개의 컬럼으로 나누어 필요할 때마다 재배치하는 방법 (960 그리드, 1200 그리드, 12칼럼 그리드, 16칼럼 그리드)
+
+* 가변 그리드 레이아웃
+ - 전체르 감싸는 요소의 너비를 %로 변환
+* 가변 글꼴
+ - em 단위 : 부모 요소 폰트의 대문자 M 너비를 1em 지정. 1em = 16px
+ - rem 단위 : 기본 크기를 지정하고 기준으로 글자 크기 지정 
+
+* 가변 이미지 : 브라우저 창의 너비가 변하더라도 너비 값 조정
+ - CSS 활용 : 이미지를 감싸고 있는 부모 만큼만 커지거나 작아지도록 max-width 속성을 100%로 지정
+ - `<img>`태그와 srcset 속성 : 너비 값이나 픽셀 밀도에 따라 고해상도 이미지 파일 지정 가능 ex) `<img src="이미지" srcset="이미지1 이미지2 ...">`
+ - `<picture>`태그와 `<source>` 태그 : 화면 해상도 뿐 아니라 너비에 따라 다른 이미지 파일 표시
+
+* 가변 비디오 : CSS 사용해 max-width 속성을 100%로 지정 
+
+## 미디어 쿼리
+-> 접속하는 장치에 따라 특정한 CSS 스타일 사용하도록 함
+
+* 미디어 쿼리 구문 ex) @media [only | not] 미디어 유형 [and 조건] * [and 조건] -> and, only, not, 쉼표
+ex) @media screen and (min-width:200px) and (max-width:360px)
+
+* 미디어 쿼리 조건 
+ - 단말기의 가로 너비와 세로 높이 ex) device-width, device-heigth, min-device-width .. 
+ - 화면 회전 -> operation 속성으로 화면 방향 체크 
+ - 화면 비율 : 단말기 브라우저 화면의 너비 값을 높이 값으로 나눈 것 
+ - 단말기 화면 비율 : 화면 비율과 동일
+ - 색상당 비트 수 : 단말기의 최대 색상 비트 수를 조건으로 사용
+ 
+* 미디어 쿼리 중단점 만들기
+ - 스마트폰 세로 : @media only screen and (min-width: 320px){ ... }
+ - 스마트폰 가로 :  @media only screen and (min-width: 480px){ ... }
+ - 태블릿 세로 :  @media only screen and (min-width: 768px){ ... }
+ - 태블릿 가로, 데스크톱 :  @media only screen and (min-width: 1024px){ ... }
+
+* 외부 css 파일 연결
+ - `<link>`태그 사용하기 : `<head>` 태그 사이에 삽입. ex) `<link rel="stylesheet" media="screen and (max-width:768px) " href="css/tablet.css">`
+ - @import 구문 사용하기 : `<style>` 태그 사잉에 삽입. ex) @import url("css/tablet.css) only screen adn (max-width:321px) and (maxwidthL768px);
+ - 웹 문서에서 직접 정의하기 : `<style media ="미디어 쿼리 조건">`
+ - `<style>` 태그 안에 @media 구문 사용하기
+
+## 플렉서블 박스 레이아웃
+-> 그리드 레이아웃을 기본으로, 플렉스 박스를 원하는 위치에 배치하는 것
+
+* flex container : 웹 문서를 먼저 플렉스 컨테이너로 묶어줘야한다.
+* flex item : 플렉스 컨테이너에 담기는 웹 요소들
+* main axis : 컨테이너 안에서 항목을 배치하는 기본 방향. 주축에서 플렉스 항목이 배치되기 시작하는 지점이 시작점 끝이 끝점이다.
+* cross axis : 주축과 교차되는 방향. 일반적으로 위에서 아래.
+
+* display 속성 : 배치 요소들을 감싸는  부모 요소를 flex container로 지정 ex) display: flex | inline-lex >>> display 속성에 브라우저 접두사를 붙여야함
+* flex-direction 속성 : 플레스 항목 배치 방향 지정 ex) flex-direction: row | row-inverse | column | column-inverse
+* flex-wrap 속성 : 플렉스 항목을 한줄 또는 여러줄로 배치 ex) flex-wrap: no-wrap | wrap | wrap-reverse
+* flex-flow 속성 : 플레스 배치 방향과 여러 줄 배치를 한꺼번에 지정 ex) flex-low : 플렉스 방향 플렉스 줄 배치
+* justify-content 속성 : 플렉스 항목을 주축 방향으로 배치할 때의 배치 기준 ex) justify-content : flex-start | flex-end | center | space-between | space-around
+* align-items, align-self 속성 : 교차축을 기준으로 하는 배치 방법 조절 ex) align-items : stretch | flex-start | flex-end | center | baseline
+* align-content 속성 : 플레스 항목이 여러 줄로 표시될 때 교차 축 기준의 배치 방법 지정 ex) align-content : flex-start | flex-end | center | space-between | space-around
+
+* felx 속성 : 플렉스 항목의 크기 조절 -> 기본값 flex:0 1 auto; ex) felx : `[<flex-grow> <flex-shrink> <flex-basis>] | auto | initial
+ex) 
+
+```CSS
+	#box1{
+             flex:1 1 0;
+         }
+        #box2{
+             flex:2 2 0;
+        }
+```
